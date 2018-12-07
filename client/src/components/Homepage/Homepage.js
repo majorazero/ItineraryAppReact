@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from "axios";
 
 class Homepage extends Component {
   constructor(){
@@ -21,7 +22,12 @@ class Homepage extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
+    //still need to figure out how I want to save the date, probably locally.
+    axios.post("/api/hotelSearch",{
+      destination: this.state.destination
+    }).then((res)=>{
+      console.log(res.data);
+    });
   }
 
   render(){
