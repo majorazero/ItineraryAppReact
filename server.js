@@ -21,11 +21,12 @@ else{
   mongoose.connect("mongodb://localhost/iteReact", {useNewUrlParser: true});
 }
 
+require("./routes")(app);
+
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-require("./routes/index.js")(app);
 
 app.listen(PORT, () => {
   console.log(`🌎 ==> Server now on port ${PORT}!`);
