@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
-import "./Homepage.css";
+import "./Login.css";
 
-class Homepage extends Component {
+class Login extends Component {
   constructor(){
     super();
     this.state = {
@@ -44,4 +44,4 @@ class Homepage extends Component {
   }
 }
 
-export default Homepage;
+export default Login;
