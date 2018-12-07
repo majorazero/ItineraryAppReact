@@ -8,7 +8,7 @@ module.exports = (app) => {
         res.json("No such user!");
       }
       else{
-        res.json(data[0].token);
+        res.json({token: data[0].token, id:data[0]._id});
       }
     }).catch((err)=>{
       res.json(err);
@@ -25,7 +25,7 @@ module.exports = (app) => {
           email: req.body.email,
           password: req.body.password,
           token: encryption.encrypt(req.body.email,req.body.password)
-        }).then(()=>{
+        }).then((data)=>{
           res.json(true);
         });
       }

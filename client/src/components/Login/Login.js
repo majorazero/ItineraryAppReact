@@ -23,7 +23,9 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     }).then((res)=>{
-      console.log(res.data);
+      localStorage.setItem("token",res.data.token);
+      sessionStorage.setItem("id",res.data.id);
+      console.log(localStorage.getItem("token"),sessionStorage.getItem("id"));
     });
   }
 

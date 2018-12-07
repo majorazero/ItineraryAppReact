@@ -28,14 +28,14 @@ class Register extends Component {
         email: this.state.email,
         password: this.state.password
       }).then((res)=>{
-        if(res.data === true){
-          console.log("User created!");
-        }
-        else{
+        if(res.data !== false){
           this.setState({
             passMess: "",
             emailMess: "User already exists!"
           })
+        }
+        else{
+          console.log("something");
         }
       });
     }
