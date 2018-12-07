@@ -11,6 +11,9 @@ let UserSchema = new Schema({
   password: {
     type: String,
     require: "You need a password!"
+  },
+  token:{
+    type: String
   }
 });
 

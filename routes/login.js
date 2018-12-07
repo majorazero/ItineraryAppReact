@@ -1,4 +1,5 @@
 const db = require("../models");
+const encryption = require("../helper/encrypt.js");
 
 module.exports = (app) => {
   app.post("/api/login",(req,res)=>{
@@ -7,7 +8,7 @@ module.exports = (app) => {
         res.json("No such user!");
       }
       else{
-        res.json("Hit!");
+        res.json(data[0].token);
       }
     }).catch((err)=>{
       res.json(err);
@@ -22,7 +23,8 @@ module.exports = (app) => {
       else{
         db.User.create({
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          token: encryption.encrypt(req.body.email,req.body.password)
         }).then(()=>{
           res.json(true);
         });
