@@ -1,13 +1,14 @@
 import React, {Component} from "react";
 import axios from "axios";
-import "./Login.css";
 
-class Login extends Component {
+class Register extends Component {
   constructor(){
     super();
     this.state = {
       email: "",
       password: "",
+      passMess: "",
+      emailMess: ""
     }
   }
 
@@ -19,35 +20,50 @@ class Login extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("/api/login",{
-      email: this.state.email,
-      password: this.state.password
-    }).then((res)=>{
-      console.log(res.data);
-    });
+    if(this.state.password.length < 4){
+      this.setState({passMess:"Password need to at least have a length of 5!"});
+    }
+    else{
+      axios.post("/api/register",{
+        email: this.state.email,
+        password: this.state.password
+      }).then((res)=>{
+        if(res.data === true){
+          console.log("User created!");
+        }
+        else{
+          this.setState({
+            passMess: "",
+            emailMess: "User already exists!"
+          })
+        }
+      });
+    }
   }
 
   render(){
     return(
       <div className="jumbotron">
-        <div className="loginTitle">Login!</div>
+        <div className="loginTitle">Register!</div>
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Email</label>
             <input className="form-control" onChange={this.handleChange} name="email" type="email"/>
+            <small>{this.state.emailMess}</small>
           </div>
           <div className="form-group">
             <label>Password</label>
             <input className="form-control" onChange={this.handleChange} name="password" type="password" />
+            <small>{this.state.passMess}</small>
           </div>
           <button type="submit">Submit</button>
         </form>
         <div>
-          <a href="/register">Register!</a>
+          <a href="/login">Login!</a>
         </div>
       </div>
     );
   }
 }
 
-export default Login;
+export default Register;
