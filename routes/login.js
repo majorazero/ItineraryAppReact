@@ -25,8 +25,9 @@ module.exports = (app) => {
           email: req.body.email,
           password: req.body.password,
           token: encryption.encrypt(req.body.email,req.body.password)
-        }).then((data)=>{
-          res.json(true);
+        }).then((data2)=>{
+          console.log(data2);
+          res.json({token:encryption.encrypt(req.body.email,req.body.password), id: data2._id});
         });
       }
     });
