@@ -47,6 +47,9 @@ class Login extends Component {
         <div>
           <a href="/register">Register!</a>
         </div>
+        <div>
+          <a href="/">Home</a>
+        </div>
       </div>
     );
   }

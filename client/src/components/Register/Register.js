@@ -61,6 +61,9 @@ class Register extends Component {
         <div>
           <a href="/login">Login!</a>
         </div>
+        <div>
+          <a href="/">Home</a>
+        </div>
       </div>
     );
   }
