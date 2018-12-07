@@ -4,9 +4,11 @@ class Homepage extends Component {
   constructor(){
     super();
 
+    let today = new Date();
+
     this.state = {
       destination: "",
-      startDate: "",
+      startDate:  today.toISOString().substring(0,10),
       endDate: ""
     };
   }
@@ -40,7 +42,7 @@ class Homepage extends Component {
             </div>
             <div className="form-group">
               <label>Start Date</label>
-              <input onChange={this.handleChange} className="form-control" name="startDate" type="date" />
+              <input onChange={this.handleChange} className="form-control" name="startDate" type="date" value={this.state.startDate} />
             </div>
             <div className="form-group">
               <label>End Date</label>
