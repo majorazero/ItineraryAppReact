@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let Schema = mongoose.Shema;
+let Schema = mongoose.Schema;
 
 let TripSchema = new Schema({
   userId: {

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-let Schema = mongoose.Shema;
+let Schema = mongoose.Schema;
 
 let BusinessSchema = new Schema({
   Name: {
