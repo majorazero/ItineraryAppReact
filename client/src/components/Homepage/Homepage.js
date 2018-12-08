@@ -13,6 +13,7 @@ class Homepage extends Component {
       destination: "",
       startDate:  today.toISOString().substring(0,10),
       endDate: "",
+      hotel: "",
       stage: 0
     };
   }
@@ -26,13 +27,14 @@ class Homepage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     //still need to figure out how I want to save the date, probably locally.
-    this.setState({
-      stage: 1
-    });
     axios.post("/api/hotelSearch",{
       destination: this.state.destination
     }).then((res)=>{
       console.log(res.data);
+      this.setState({
+        hotel: res.data,
+        stage: 1
+      })
     });
   }
 
@@ -42,7 +44,7 @@ class Homepage extends Component {
        startDate={this.state.startDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>;
     }
     else if(this.state.stage === 1){
-      return <HotelPage />;
+      return <HotelPage hotel={this.state.hotel}/>;
     }
   }
 
