@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import axios from "axios";
 import InputPage from "../InputPage/InputPage.js";
 import HotelPage from "../HotelPage/HotelPage.js";
+import ItePage from "../ItePage/ItePage.js";
 
 class Homepage extends Component {
   constructor(){
@@ -45,7 +46,13 @@ class Homepage extends Component {
       return <HotelPage hotel={this.state.hotel}
       homepageReturn={()=>{
         this.setState({stage: 0});
+      }}
+      itePage={()=>{
+        this.setState({stage:2})
       }}/>;
+    }
+    else if(this.state.stage === 2){
+      return <ItePage />;
     }
   }
 
