@@ -6,6 +6,7 @@ const HotelPage = (props) => {
   return(
     <div className = 'container'>
       <h1>Here are some hotels!</h1>
+      <button onClick={props.homepageReturn}>Changed my mind, take me back!</button>
       {props.hotel.map((item)=>{
         return (
           <div key={item.id} className='row hotelSelect'>

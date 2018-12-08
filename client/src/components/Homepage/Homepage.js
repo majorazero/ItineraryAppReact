@@ -6,9 +6,7 @@ import HotelPage from "../HotelPage/HotelPage.js";
 class Homepage extends Component {
   constructor(){
     super();
-
     let today = new Date();
-
     this.state = {
       destination: "",
       startDate:  today.toISOString().substring(0,10),
@@ -44,7 +42,10 @@ class Homepage extends Component {
        startDate={this.state.startDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>;
     }
     else if(this.state.stage === 1){
-      return <HotelPage hotel={this.state.hotel}/>;
+      return <HotelPage hotel={this.state.hotel}
+      homepageReturn={()=>{
+        this.setState({stage: 0});
+      }}/>;
     }
   }
 
