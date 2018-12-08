@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import InputPage from "../InputPage/InputPage.js";
+import HotelPage from "../HotelPage/HotelPage.js";
 
 class Homepage extends Component {
   constructor(){
@@ -25,11 +26,24 @@ class Homepage extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     //still need to figure out how I want to save the date, probably locally.
+    this.setState({
+      stage: 1
+    });
     axios.post("/api/hotelSearch",{
       destination: this.state.destination
     }).then((res)=>{
       console.log(res.data);
     });
+  }
+
+  stage = () => {
+    if(this.state.stage === 0){
+      return  <InputPage
+       startDate={this.state.startDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>;
+    }
+    else if(this.state.stage === 1){
+      return <HotelPage />;
+    }
   }
 
   render(){
@@ -41,8 +55,7 @@ class Homepage extends Component {
         <div>
           <a href="/register">Register</a>
         </div>
-        <InputPage
-         startDate={this.state.startDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+        {this.stage()}
       </div>
     );
   }

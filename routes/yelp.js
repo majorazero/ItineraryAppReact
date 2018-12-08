@@ -9,6 +9,8 @@ module.exports = (app) => {
       location: req.body.destination
     }).then((data)=>{
       res.json(data.jsonBody.businesses);
+    }).catch((err)=>{
+      res.json("Destination not available!");
     });
   });
 };
