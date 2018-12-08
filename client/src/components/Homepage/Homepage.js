@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
+import InputPage from "../InputPage/InputPage.js";
 
 class Homepage extends Component {
   constructor(){
@@ -10,7 +11,8 @@ class Homepage extends Component {
     this.state = {
       destination: "",
       startDate:  today.toISOString().substring(0,10),
-      endDate: ""
+      endDate: "",
+      stage: 0
     };
   }
 
@@ -39,24 +41,8 @@ class Homepage extends Component {
         <div>
           <a href="/register">Register</a>
         </div>
-        <div className="jumbotron">
-          <h1>Where do you want to go?</h1>
-          <form onSubmit={this.handleSubmit}>
-            <div className="form-group">
-              <label>Destination</label>
-              <input onChange={this.handleChange} className="form-control" name="destination" type="text" />
-            </div>
-            <div className="form-group">
-              <label>Start Date</label>
-              <input onChange={this.handleChange} className="form-control" name="startDate" type="date" value={this.state.startDate} />
-            </div>
-            <div className="form-group">
-              <label>End Date</label>
-              <input onChange={this.handleChange} className="form-control" name="endDate" type="date" />
-            </div>
-            <button type="submit">Lets Go!</button>
-          </form>
-        </div>
+        <InputPage
+         startDate={this.state.startDate} handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
       </div>
     );
   }
