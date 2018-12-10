@@ -1,10 +1,15 @@
 .hotelImage {
-  height: 200px;
+  height: 100%;
   width: 200px;
   vertical-align: middle;
 }
 
 .hotelSelect {
+  padding: 5px;
   margin: 2px;
   border: red solid 1px;
+}
+
+.hotelSelect:hover {
+  background-color: red;
 }

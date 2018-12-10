@@ -16,6 +16,8 @@ const HotelPage = (props) => {
             <div className = 'col-md-9'>
               <h4>{item.name}</h4>
               <h5>{item.price}</h5>
+              <h5>{item.location.display_address[0]}</h5>
+              <h5>{item.location.display_address[1]}</h5>
               <h5>{item.rating} {item.review_count} Reviews</h5>
             </div>
           </div>
