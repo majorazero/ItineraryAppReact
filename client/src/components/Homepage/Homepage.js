@@ -13,7 +13,8 @@ class Homepage extends Component {
       startDate:  today.toISOString().substring(0,10),
       endDate: "",
       hotel: "",
-      stage: 0
+      stage: 0,
+      selectedHotel: ""
     };
   }
 
@@ -37,6 +38,13 @@ class Homepage extends Component {
     });
   }
 
+  handleHotelSubmit = (item) => {
+    this.setState({
+      selectedHotel: item,
+      stage: 2
+    })
+  }
+
   stage = () => {
     if(this.state.stage === 0){
       return  <InputPage
@@ -47,12 +55,13 @@ class Homepage extends Component {
       homepageReturn={()=>{
         this.setState({stage: 0});
       }}
-      itePage={()=>{
-        this.setState({stage:2})
+      itePage={(item)=>{
+        this.handleHotelSubmit(item);
       }}/>;
     }
     else if(this.state.stage === 2){
-      return <ItePage />;
+      return <ItePage selectedHotel={this.state.selectedHotel}
+      changeHotel={()=>{this.setState({stage:1})}}/>;
     }
   }
 

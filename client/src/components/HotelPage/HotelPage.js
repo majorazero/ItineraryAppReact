@@ -9,7 +9,7 @@ const HotelPage = (props) => {
       <button onClick={props.homepageReturn}>Changed my mind, take me back!</button>
       {props.hotel.map((item)=>{
         return (
-          <div onClick={props.itePage} key={item.id} className='row hotelSelect'>
+          <div onClick={()=>{props.itePage(item)}} key={item.id} className='row hotelSelect'>
             <div className='col-md-3'>
               <img className="img-fluid hotelImage" src={item.image_url} alt={item.name}/>
             </div>
