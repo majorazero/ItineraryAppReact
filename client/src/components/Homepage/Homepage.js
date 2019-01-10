@@ -3,6 +3,7 @@ import axios from "axios";
 import InputPage from "../InputPage/InputPage.js";
 import HotelPage from "../HotelPage/HotelPage.js";
 import ItePage from "../ItePage/ItePage.js";
+import Map from "../Map/Map.js";
 
 class Homepage extends Component {
   constructor(){
@@ -62,6 +63,9 @@ class Homepage extends Component {
     else if(this.state.stage === 2){
       return <ItePage selectedHotel={this.state.selectedHotel}
       changeHotel={()=>{this.setState({stage:1})}}/>;
+    }
+    else if(this.state.stage === 3){
+      return <Map />;
     }
   }
 
