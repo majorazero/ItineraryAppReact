@@ -23,7 +23,13 @@ class Map extends Component  {
          defaultCenter={this.state.center}
          defaultZoom={this.state.zoom}
           >
-
+          <div
+            lat= {this.state.center.lat}
+            lng= {this.state.center.lng}
+            className='marker'
+            >
+            A
+          </div>
         </GoogleMapReact>
       </div>
     );
