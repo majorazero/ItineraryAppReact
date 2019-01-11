@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import GoogleMapReact from "google-map-react";
+import Marker from "./Marker/Marker.js";
 
 class Map extends Component  {
 
@@ -23,13 +24,12 @@ class Map extends Component  {
          defaultCenter={this.state.center}
          defaultZoom={this.state.zoom}
           >
-          <div
+          <Marker
             lat= {this.state.center.lat}
             lng= {this.state.center.lng}
-            className='marker'
+            text="A"
             >
-            A
-          </div>
+          </Marker>
         </GoogleMapReact>
       </div>
     );
